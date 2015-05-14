@@ -42,6 +42,7 @@ function Calculator() {
     this.modulo = function(firstNumber, secondNumber) {
         return firstNumber % secondNumber;
     }
+    return this;
 }
 
 var calc = new Calculator();
