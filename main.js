@@ -81,7 +81,7 @@ console.log(calc.divide(5, 3));
 console.log(calc.diff(5, 3));
 console.log(calc.modulo(5, 3));*/
 
-function add(firstNumber, secondNumber) {
+/*function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }
 function multiply(firstNumber, secondNumber) {
@@ -112,4 +112,40 @@ console.log(calc.add(5, 3));
 console.log(calc.multiply(5, 3));
 console.log(calc.divide(5, 3));
 console.log(calc.diff(5, 3));
-console.log(calc.modulo(5, 3));
+console.log(calc.modulo(5, 3));*/
+
+
+function Profile() {
+    this.dateCreated = new Date();
+
+    return this;
+}
+
+Profile.prototype.setData = function (data) {
+    var propName;
+
+    for (propName in data) {
+        if (data.hasOwnProperty(propName)) {
+            this[propName] = data[propName];
+        }
+    }
+
+    this.dateUpdated = new Date();
+
+    if (this.hasSpouse) {
+        this.spouse = new Spouse();
+    }
+};
+
+Profile.prototype.getProperty = function (propertyName) {
+    return this[propertyName];
+};
+
+function Spouse() {
+    return this;
+}
+
+var profile = new Profile();
+profile.setData({ age: 40, firstName: 'John', lastName: 'Doe', middleName: 'Arthur', hasSpouse: true });
+profile.getProperty('firstName');
+profile.setData.call(profile.spouse, { age: 35, firstName: 'Anna', lastName: 'Doe', middleName: 'Marie' });
